@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useCallback } from 'react';
+import React, { createContext, useContext, useCallback, } from 'react';
 
 interface PopUpContextData {
-  addPopUp(message:string): void;
+  addPopUp(message: string): void;
   removePopUp(): void;
 }
 
@@ -12,8 +12,10 @@ const PopUpContext = createContext<PopUpContextData>({} as PopUpContextData);
 
 const PopUpProvider: React.FC = ({children}) =>{
 
-  const addPopUp = useCallback(()=>{
+  const addPopUp = useCallback((message)=>{
     console.log('addPopUp')
+
+    const toast = message;
   },[]);
 
   const removePopUp = useCallback(()=>{},[])
