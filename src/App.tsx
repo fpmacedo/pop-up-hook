@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, useState } from 'react';
+import Popup from './components/PopUp';
+import {PopUpProvider, usePopUp } from './hooks/PopUpContext';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+function App()  {
+  const [showPopUp, setShowPopUp] = useState(false);
+  const { addPopUp } = usePopUp();
+
+  function handlePopUp(){
+    addPopUp('messa');
+
+
+  }
+
+  return(
+    <div>
+    <h1> Simple Popup Example In React Application </h1>
+    <button onClick={()=>{handlePopUp()}}> Click To Launch Popup</button>
+    <PopUpProvider>
+      {/* <Popup text='Meu PopUp'
+          title="close"
+          icon="icon"/> */}
+    </PopUpProvider>
+
+
+      </div>
+  )
+
 }
 
 export default App;
