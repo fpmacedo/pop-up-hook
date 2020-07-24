@@ -1,33 +1,36 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import Popup from './components/PopUp';
-import {PopUpProvider, usePopUp } from './hooks/PopUpContext';
+import PopUpContext from './contexts/PopUpContext';
 
+const App: React.FC = () => {
+  const [estado, setEstado] = useState(false);
 
-
-function App()  {
-  const [showPopUp, setShowPopUp] = useState(false);
-  const { addPopUp } = usePopUp();
-
-  function handlePopUp(){
-    addPopUp('messa');
-
-
+  function open() {
+    setEstado(true);
+    console.log(estado);
   }
 
-  return(
+  function close() {
+    setEstado(false);
+    console.log(estado);
+  }
+
+  return (
     <div>
-    <h1> Simple Popup Example In React Application </h1>
-    <button onClick={()=>{handlePopUp()}}> Click To Launch Popup</button>
-    <PopUpProvider>
-      {/* <Popup text='Meu PopUp'
-          title="close"
-          icon="icon"/> */}
-    </PopUpProvider>
-
-
-      </div>
-  )
-
-}
+      <h1> Simple Popup Example In React Application </h1>
+      <button
+        type="submit"
+        onClick={() => {
+          open();
+        }}
+      >
+        Click To Launch Popup
+      </button>
+      <PopUpContext.Provider value={{ close }}>
+        {estado ? <Popup text="Meu PopUp" title="close" icon="icon" /> : null}
+      </PopUpContext.Provider>
+    </div>
+  );
+};
 
 export default App;
