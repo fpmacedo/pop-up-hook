@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useCallback } from 'react';
 
 interface PopUpContextData {
   close(): void;
@@ -11,17 +11,18 @@ const PopUpContext = createContext<PopUpContextData>({} as PopUpContextData);
 const PropUpProvider: React.FC = ({ children }) => {
   const [estado, setEstado] = useState(false);
 
-  function open() {
+  const open = useCallback(() => {
     setEstado(true);
     console.log(estado);
 
     return estado;
-  }
-  function close() {
+  }, [estado]);
+
+  const close = useCallback(() => {
     setEstado(false);
     console.log(estado);
     return estado;
-  }
+  }, [estado]);
 
   return (
     <PopUpContext.Provider value={{ close, open, estado }}>
