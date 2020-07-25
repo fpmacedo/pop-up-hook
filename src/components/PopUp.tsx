@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Popup, PopUpInner } from './style';
-import PopUpContext from '../contexts/PopUpContext';
+import { usePopUp } from '../contexts/PopUpContext';
 
 interface PopUpProps {
   title: string;
@@ -9,7 +9,7 @@ interface PopUpProps {
 }
 
 const PopUp: React.FC<PopUpProps> = ({ title, text, icon }) => {
-  const { close } = useContext(PopUpContext);
+  const { close } = usePopUp();
 
   function change() {
     close();
