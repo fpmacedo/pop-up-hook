@@ -1,6 +1,6 @@
 import React from 'react';
 import Popup from './components/PopUp';
-import { PropUpProvider, usePopUp } from './contexts/PopUpContext';
+import { usePopUp } from './contexts/PopUpContext';
 
 const App: React.FC = () => {
   const { open, estado } = usePopUp();
@@ -16,9 +16,8 @@ const App: React.FC = () => {
       >
         Click To Launch Popup
       </button>
-      <PropUpProvider>
-        {estado ? <Popup text="Meu PopUp" title="close" icon="icon" /> : null}
-      </PropUpProvider>
+
+      {estado ? <Popup text="Meu PopUp" title="close" icon="icon" /> : null}
     </div>
   );
 };

@@ -11,18 +11,31 @@ const PopUpContext = createContext<PopUpContextData>({} as PopUpContextData);
 const PropUpProvider: React.FC = ({ children }) => {
   const [estado, setEstado] = useState(false);
 
-  const open = useCallback(() => {
+  function open() {
     setEstado(true);
     console.log(estado);
 
     return estado;
-  }, [estado]);
+  }
 
-  const close = useCallback(() => {
+  function close() {
     setEstado(false);
     console.log(estado);
     return estado;
-  }, [estado]);
+  }
+
+  // const open = useCallback(() => {
+  //   setEstado(true);
+  //   console.log(estado);
+
+  //   return estado;
+  // }, [estado]);
+
+  // const close = useCallback(() => {
+  //   setEstado(false);
+  //   console.log(estado);
+  //   return estado;
+  // }, [estado]);
 
   return (
     <PopUpContext.Provider value={{ close, open, estado }}>

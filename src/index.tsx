@@ -2,10 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { PropUpProvider } from './contexts/PopUpContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PropUpProvider>
+      <App />
+    </PropUpProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
