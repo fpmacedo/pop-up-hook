@@ -17,7 +17,9 @@ const App: React.FC = () => {
         Click To Launch Popup
       </button>
 
-      {estado ? <Popup text="Meu PopUp" title="close" icon="icon" /> : null}
+      {estado ? (
+        <Popup text="PopUp component" title="My new PopUp" icon="success" />
+      ) : null}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Popup, PopUpInner } from './style';
+import { Popup, PopUpInner, FiAlertCircleIcon } from './style';
 import { usePopUp } from '../contexts/PopUpContext';
 
 interface PopUpProps {
@@ -19,7 +19,11 @@ const PopUp: React.FC<PopUpProps> = ({ title, text, icon }) => {
     <>
       <Popup>
         <PopUpInner>
-          <h1>{text}</h1>
+          <h1>{title}</h1>
+
+          <FiAlertCircleIcon />
+
+          <p>{text}</p>
           <button
             type="submit"
             onClick={() => {
